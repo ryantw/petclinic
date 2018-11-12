@@ -2,10 +2,11 @@ package io.lker.petclinic.services.map;
 
 import io.lker.petclinic.model.Pet;
 import io.lker.petclinic.services.CrudService;
+import io.lker.petclinic.services.PetService;
 
 import java.util.Set;
 
-public class PetServiceMap extends AbstractMapService<Pet, Long> implements CrudService<Pet, Long> {
+public class PetServiceMap extends AbstractMapService<Pet, Long> implements PetService {
 
     @Override
     public Set<Pet> findAll() {
