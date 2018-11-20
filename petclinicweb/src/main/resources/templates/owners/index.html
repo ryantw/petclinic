@@ -5,7 +5,27 @@
     <title>Owner List Page</title>
 </head>
 <body>
-<h1 th:text="'List of Owners'">Owner Index Page</h1>
+<!--/*@thymesVar id="owner" type="io.lker.petclinic.model.Owner"*/-->
+    <h1 th:text="'List of Owners'">Owner Index Page</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <td>id</td>
+                <td>first name</td>
+                <td>last name</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="owner : ${owners}">
+                <td th:text="${owner?.id}">1</td>
+                <td th:text="${owner?.firstName}">Joe</td>
+                <td th:text="${owner?.lastName}">Allen</td>
+            </tr>
+
+        </tbody>
+
+    </table>
 
 </body>
 </html>
