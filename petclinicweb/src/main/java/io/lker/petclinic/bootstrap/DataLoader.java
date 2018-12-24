@@ -2,10 +2,7 @@ package io.lker.petclinic.bootstrap;
 
 
 import io.lker.petclinic.model.*;
-import io.lker.petclinic.services.OwnerService;
-import io.lker.petclinic.services.PetTypeService;
-import io.lker.petclinic.services.SpecialtiesService;
-import io.lker.petclinic.services.VetService;
+import io.lker.petclinic.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -21,13 +18,16 @@ public class DataLoader implements CommandLineRunner {
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialtiesService specialtiesService;
+    private final VisitService visitService;
 
     @Autowired
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtiesService specialtiesService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService,
+                      SpecialtiesService specialtiesService, VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialtiesService = specialtiesService;
+        this.visitService = visitService;
     }
 
     @Override
@@ -92,6 +92,12 @@ public class DataLoader implements CommandLineRunner {
         annsleysPet.setName("Lloyd");
         owner2.getPets().add(annsleysPet);
         ownerService.save(owner2);
+
+        Visit llyodVisit = new Visit();
+        llyodVisit.setPet(annsleysPet);
+        llyodVisit.setDate(LocalDate.now());
+        llyodVisit.setDescription("Too fat.");
+        visitService.save(llyodVisit);
 
 
         /** VETS **/
