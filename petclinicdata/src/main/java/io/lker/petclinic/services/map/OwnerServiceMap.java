@@ -1,6 +1,7 @@
 package io.lker.petclinic.services.map;
 
 import io.lker.petclinic.model.Owner;
+import io.lker.petclinic.model.Person;
 import io.lker.petclinic.model.Pet;
 import io.lker.petclinic.services.OwnerService;
 import io.lker.petclinic.services.PetService;
@@ -72,6 +73,10 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
 
     @Override
     public Owner findByLastName(String lastName) {
-        return null;
+        return this.findAll()
+                .stream()
+                .filter(owner -> owner.getLastName().equalsIgnoreCase(lastName))
+                .findFirst()
+                .orElse(null);
     }
 }
