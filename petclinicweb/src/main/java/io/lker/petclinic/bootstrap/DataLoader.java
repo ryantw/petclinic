@@ -99,6 +99,14 @@ public class DataLoader implements CommandLineRunner {
         llyodVisit.setDescription("Too fat.");
         visitService.save(llyodVisit);
 
+        Owner owner3 = new Owner();
+        owner3.setFirstName("John");
+        owner3.setLastName("Smith");
+        owner3.setAddress("21 Oxmoor Dr");
+        owner3.setCity("Etown");
+        owner3.setTelephone("321-654-7890");
+        ownerService.save(owner3);
+
 
         /** VETS **/
         Vet vet1 = new Vet();
